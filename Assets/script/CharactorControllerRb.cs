@@ -132,6 +132,10 @@ public class CharactorControllerRb : MonoBehaviour
         anim.SetTrigger("Jump");
     }
 
+    /// <summary>
+    /// 敵からダメージを受ける
+    /// </summary>
+    /// <param name="collision">敵</param>
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Enemy")
