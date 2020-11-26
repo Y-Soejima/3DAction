@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharactorControllerRb : MonoBehaviour
 {
@@ -11,7 +12,11 @@ public class CharactorControllerRb : MonoBehaviour
     /// <summary>ジャンプ力</summary>
     [SerializeField] float jumpPower = 5f;
     /// <summary>接地判定の際、中心 (Pivot) からどれくらいの距離を「接地している」と判定するかの長さ</summary>
-    [SerializeField] float isGroundedLength = 1.1f; 
+    [SerializeField] float isGroundedLength = 1.1f;
+    [SerializeField] int maxHp = 100; // 最大HP
+    [SerializeField] int currentHp; //現在のHP
+    [SerializeField] int attackPower = 20; //攻撃力
+    [SerializeField] Slider slider;
     string clipName;//再生中のanimation名
     AnimatorClipInfo[] stateInfo;
     Animator anim = null;
@@ -19,6 +24,8 @@ public class CharactorControllerRb : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        slider.value = 1;
+        currentHp = maxHp;
         rb = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
     }
@@ -123,5 +130,15 @@ public class CharactorControllerRb : MonoBehaviour
     {
         rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
         anim.SetTrigger("Jump");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            int damage = Random.Range(10, 30);
+            currentHp -= damage;
+            slider.value = (float)currentHp / (float)maxHp;
+        }
     }
 }
