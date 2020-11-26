@@ -15,7 +15,6 @@ public class CharactorControllerRb : MonoBehaviour
     [SerializeField] float isGroundedLength = 1.1f;
     [SerializeField] int maxHp = 100; // 最大HP
     [SerializeField] int currentHp; //現在のHP
-    [SerializeField] int attackPower = 20; //攻撃力
     [SerializeField] Slider slider;
     string clipName;//再生中のanimation名
     AnimatorClipInfo[] stateInfo;
