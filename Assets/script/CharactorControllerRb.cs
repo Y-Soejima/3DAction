@@ -137,6 +137,7 @@ public class CharactorControllerRb : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             int damage = Random.Range(10, 30);
+            Debug.Log("Damage:" + damage);          
             currentHp -= damage;
             slider.value = (float)currentHp / (float)maxHp;
         }
