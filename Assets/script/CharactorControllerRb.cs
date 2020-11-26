@@ -132,9 +132,9 @@ public class CharactorControllerRb : MonoBehaviour
         anim.SetTrigger("Jump");
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
             int damage = Random.Range(10, 30);
             currentHp -= damage;
