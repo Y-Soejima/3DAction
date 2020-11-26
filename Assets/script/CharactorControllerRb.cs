@@ -16,8 +16,6 @@ public class CharactorControllerRb : MonoBehaviour
     [SerializeField] int maxHp = 100; // 最大HP
     [SerializeField] int currentHp; //現在のHP
     [SerializeField] Slider slider;
-    string clipName;//再生中のanimation名
-    AnimatorClipInfo[] stateInfo;
     Animator anim = null;
     Rigidbody rb = null;
     // Start is called before the first frame update
@@ -32,7 +30,6 @@ public class CharactorControllerRb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AnimationClip();
         // 方向の入力を取得し、方向を求める
         float v = Input.GetAxisRaw("Vertical");
         float h = Input.GetAxisRaw("Horizontal");
@@ -53,14 +50,14 @@ public class CharactorControllerRb : MonoBehaviour
             // 入力方向に滑らかに回転させる
             Quaternion targetRotation = Quaternion.LookRotation(dir);
             this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, Time.deltaTime * turnSpeed);  // Slerp を使うのがポイント
-            
+
             Vector3 velo = dir.normalized * movingSpeed; // 入力した方向に移動する
             velo.y = rb.velocity.y;   // ジャンプした時の y 軸方向の速度を保持する
-            if (clipName != "Attack")
-                rb.velocity = velo;   // 計算した速度ベクトルをセットする
+
+            rb.velocity = velo;   // 計算した速度ベクトルをセットする
         }
         // ジャンプの入力を取得し、接地している時に押されていたらジャンプする
-        if (Input.GetButtonDown("Jump") && IsGrounded() && clipName != "Slide")
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             Jump();
         }
@@ -115,15 +112,8 @@ public class CharactorControllerRb : MonoBehaviour
 
     }
 
-    /// <summary>
-    /// 再生中のanimation名を取得
-    /// </summary>
-    void AnimationClip()
-    {
-        //再生中のanimation名を取得する
-        stateInfo = anim.GetCurrentAnimatorClipInfo(0);
-        clipName = stateInfo[0].clip.name;
-    }
+
+
 
     void Jump()
     {
@@ -140,7 +130,7 @@ public class CharactorControllerRb : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             int damage = Random.Range(10, 30);
-            Debug.Log("Damage:" + damage);          
+            Debug.Log("Damage:" + damage);
             currentHp -= damage;
             slider.value = (float)currentHp / (float)maxHp;
         }
