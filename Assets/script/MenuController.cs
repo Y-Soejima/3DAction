@@ -18,8 +18,7 @@ public class MenuController : MonoBehaviour
     {
         if (Input.GetButtonDown("Menu"))
         {
-            menu.gameObject.SetActive(!menu.gameObject.activeSelf);
-            ChangeWindow(windowLists[0]);
+            MenuScreen();
         }
     }
 
@@ -39,5 +38,15 @@ public class MenuController : MonoBehaviour
             //　それぞれのウインドウのMenuAreaの最初の子要素をアクティブな状態にする
             EventSystem.current.SetSelectedGameObject(window.transform.Find("MenuArea").GetChild(0).gameObject);
         }
+    }
+
+    /// <summary>
+    /// メニュー画面の表示
+    /// </summary>
+    public void MenuScreen()
+    {
+        menu.gameObject.SetActive(!menu.gameObject.activeSelf);
+        Time.timeScale = menu.gameObject.activeSelf ? 0 : 1;
+        ChangeWindow(windowLists[0]);
     }
 }
