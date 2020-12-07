@@ -15,14 +15,20 @@ public class CharactorControllerRb : MonoBehaviour
     [SerializeField] float isGroundedLength = 1.1f;
     [SerializeField] int maxHp = 100; // 最大HP
     [SerializeField] int currentHp; //現在のHP
-    [SerializeField] Slider slider;
+    [SerializeField] int maxMp = 100; //最大MP
+    [SerializeField] int currentMp; // 現在のMP
+    [SerializeField] Slider hpSlider; //HPバー
+    [SerializeField] Slider mpSlider; //MPバー
+    [SerializeField] GameObject[] itemList;
     Animator anim = null;
     Rigidbody rb = null;
     // Start is called before the first frame update
     void Start()
     {
-        slider.value = 1;
+        hpSlider.value = 1;
+        mpSlider.value = 1;
         currentHp = maxHp;
+        currentMp = maxMp;
         rb = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
     }
@@ -123,19 +129,12 @@ public class CharactorControllerRb : MonoBehaviour
 
     }
 
-
-
-
     void Jump()
     {
         rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
         anim.SetTrigger("Jump");
     }
 
-    /// <summary>
-    /// 敵からダメージを受ける
-    /// </summary>
-    /// <param name="collision">敵</param>
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Enemy")
@@ -143,7 +142,28 @@ public class CharactorControllerRb : MonoBehaviour
             int damage = Random.Range(10, 30);
             Debug.Log("Damage:" + damage);
             currentHp -= damage;
-            slider.value = (float)currentHp / (float)maxHp;
+            hpSlider.value = (float)currentHp / (float)maxHp;
         }
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Item")
+        {
+            ItemController.FindObjectOfType<ItemController>().Get();
+        }
+    }
+
+    public void HpHeal()
+    {
+        currentHp += 20;
+        hpSlider.value = (float)currentHp / (float)maxHp;
+    }
+
+    public void MpHeal()
+    {
+        currentMp += 20;
+        mpSlider.value = (float)currentMp / (float)maxMp;
     }
 }

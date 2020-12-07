@@ -24,6 +24,7 @@ public class TreasureBoxController : MonoBehaviour
         {
             open.Play("BoxOpen");
             Instantiate(treasure[RandomPop(treasure)], itemPop);
+
             isOpen = true;
         }
     }

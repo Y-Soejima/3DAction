@@ -8,17 +8,7 @@ public class ButtonEvent : MonoBehaviour
 {
     [SerializeField] string informationText;
     [SerializeField] Text information;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+   
 
     /// <summary>
     /// ボタンが選択されたときに呼ぶ

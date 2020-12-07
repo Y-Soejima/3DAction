@@ -20,17 +20,19 @@ public class PlayerAttackController : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         SwitchController sc = SwitchController.FindObjectOfType<SwitchController>();
-        TreasureBoxController tb = TreasureBoxController.FindObjectOfType<TreasureBoxController>();
-        EnemyController ec = EnemyController.FindObjectOfType<EnemyController>();
        if (other.gameObject.tag == "Switch")
         {
             sc.Clear();
         }
-       if (other.gameObject.tag == "TreasureBox" && tb.isOpen == false)
+
+        TreasureBoxController tb = TreasureBoxController.FindObjectOfType<TreasureBoxController>();
+        if (other.gameObject.tag == "TreasureBox" && tb.isOpen == false)
         {
             tb.BoxOpen();
         }
-       if (other.gameObject.tag == "Enemy")
+
+        EnemyController ec = EnemyController.FindObjectOfType<EnemyController>();
+        if (other.gameObject.tag == "Enemy")
         {
             ec.enemycurrentHp -= attackPower;
         }
