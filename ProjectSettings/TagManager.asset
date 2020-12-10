@@ -9,6 +9,7 @@ TagManager:
   - TreasureBox
   - Door1
   - Enemy
+  - Item
   layers:
   - Default
   - TransparentFX

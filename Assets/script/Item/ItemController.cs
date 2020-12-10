@@ -5,22 +5,12 @@ using UnityEngine;
 public class ItemController : MonoBehaviour
 {
     [SerializeField] GameObject iteminventory;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] int itemNumber;
 
     /// <summary>
     /// アイテムを使う
     /// </summary>
-    public void Use()
+    public virtual void Use()
     {
         Destroy(this.gameObject);
     }
