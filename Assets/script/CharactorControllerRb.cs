@@ -126,15 +126,4 @@ public class CharactorControllerRb : MonoBehaviour
         anim.SetTrigger("Jump");
     }
 
-    
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Item")
-        {
-            ItemController.FindObjectOfType<ItemController>().Get();
-        }
-    }
-
-   
 }

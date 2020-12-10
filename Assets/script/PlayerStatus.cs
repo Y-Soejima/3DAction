@@ -11,8 +11,8 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] int currentMp; // 現在のMP
     [SerializeField] Slider hpSlider; //HPバー
     [SerializeField] Slider mpSlider; //MPバー
-    [SerializeField] GameObject[] itemList;
-    // Start is called before the first frame update
+    [SerializeField] ItemController[] itemInventory;
+    
     void Start()
     {
         hpSlider.value = 1;
@@ -24,7 +24,7 @@ public class PlayerStatus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -37,6 +37,16 @@ public class PlayerStatus : MonoBehaviour
             hpSlider.value = (float)currentHp / (float)maxHp;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Item")
+        {
+            ItemController item = other.gameObject.GetComponent<ItemController>();
+            item.Get(item);
+        }
+    }
+
 
     public void HpHeal()
     {

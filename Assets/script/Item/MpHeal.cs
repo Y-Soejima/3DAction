@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemData : MonoBehaviour
+public class MpHeal : ItemController
 {
-    [SerializeField] 
     // Start is called before the first frame update
     void Start()
     {
@@ -15,5 +14,11 @@ public class ItemData : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public override void Use()
+    {
+        PlayerStatus.FindObjectOfType<PlayerStatus>().MpHeal();
+        base.Use();
     }
 }
