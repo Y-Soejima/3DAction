@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class PlayerStatus : MonoBehaviour
 {
     [SerializeField] int maxHp = 100; // 最大HP
@@ -11,7 +12,8 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] int currentMp; // 現在のMP
     [SerializeField] Slider hpSlider; //HPバー
     [SerializeField] Slider mpSlider; //MPバー
-    [SerializeField] ItemController[] itemInventory;
+    [SerializeField] ItemController[] itemInventory = new ItemController[System.Enum.GetValues(typeof(ItemController.ItemList)).Length];
+    [SerializeField] int[] itemCounter = new int[System.Enum.GetValues(typeof(ItemController.ItemList)).Length];
     
     void Start()
     {
@@ -19,12 +21,20 @@ public class PlayerStatus : MonoBehaviour
         mpSlider.value = 1;
         currentHp = maxHp;
         currentMp = maxMp;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        if (Input.GetButtonDown("Item"))
+        {
+            if (itemInventory[0])
+            {
+                itemInventory[0].Use();
+                itemCounter[0] = itemInventory[0].itemCount;
+            }
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -44,9 +54,13 @@ public class PlayerStatus : MonoBehaviour
         {
             ItemController item = other.gameObject.GetComponent<ItemController>();
             item.Get(item);
+            if (itemInventory[item.itemNumber] == null)
+            {
+                itemInventory[item.itemNumber] = item;
+            }
+            itemCounter[item.itemNumber] = item.itemCount;
         }
     }
-
 
     public void HpHeal()
     {

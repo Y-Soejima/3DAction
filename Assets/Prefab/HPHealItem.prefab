@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 920937e02dea8a140ad4fcf22266f650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iteminventory: {fileID: 0}
+  iteminventory: {x: -26, y: -1, z: 4}
   itemNumber: 0
   itemCount: 0
   itemInformation: "\u4F53\u529B\u3092\u56DE\u5FA9"

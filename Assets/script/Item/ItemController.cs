@@ -5,8 +5,8 @@ using UnityEngine;
 public class ItemController : MonoBehaviour
 {
     [SerializeField] Vector3 iteminventory = new Vector3(-26, -1, 4);
-    [SerializeField] int itemNumber; //アイテムの固有番号
-    [SerializeField] int itemCount = 0;　//アイテム所持数
+    [SerializeField] public int itemNumber; //アイテムの固有番号
+    [SerializeField] public int itemCount = 0;　//アイテム所持数
     [SerializeField] string itemInformation; //アイテムの説明
 
     /// <summary>
@@ -34,7 +34,7 @@ public class ItemController : MonoBehaviour
     /// </summary>
     public void Get(ItemController item)
     {
-        var number = System.Enum.GetNames(typeof(ItemList)).Length;
+        var number = System.Enum.GetNames(typeof(ItemController.ItemList)).Length;
         for (int i = 0; i < number; i++)
         {
             if (item.itemNumber == i)
