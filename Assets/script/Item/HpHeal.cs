@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class HpHeal : ItemController
 {
+    PlayerStatus ps;
+    public void Start()
+    {
+        ps = PlayerStatus.FindObjectOfType<PlayerStatus>();
+    }
     public override void Use()
     {
-        PlayerStatus.FindObjectOfType<PlayerStatus>().HpHeal();
+        ps.HpHeal();
         base.Use();
     }
 }

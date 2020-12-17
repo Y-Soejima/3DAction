@@ -7,7 +7,7 @@ public class ItemController : MonoBehaviour
     [SerializeField] Vector3 iteminventory = new Vector3(-26, -1, 4);
     [SerializeField] public int itemNumber; //アイテムの固有番号
     [SerializeField] public int itemCount = 0;　//アイテム所持数
-    [SerializeField] string itemInformation; //アイテムの説明
+    [SerializeField] public string itemInformation; //アイテムの説明
 
     /// <summary>
     /// アイテム一覧

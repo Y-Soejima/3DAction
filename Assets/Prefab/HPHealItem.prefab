@@ -108,5 +108,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iteminventory: {x: -26, y: -1, z: 4}
   itemNumber: 0
-  itemCount: 0
+  itemCount: 2
   itemInformation: "\u4F53\u529B\u3092\u56DE\u5FA9"

@@ -6,25 +6,23 @@ using UnityEngine.UI;
 public class ItemButton : MonoBehaviour
 {
     [SerializeField] Text information;
-    [SerializeField] ItemController item;
     [SerializeField] int itemNumber;
-    ItemController itemInventory;
+    [SerializeField] ItemController itemInventory;
     // Start is called before the first frame update
     void Start()
     {
-        item = GetComponent<ItemController>();
-        itemInventory = PlayerStatus.FindObjectOfType<PlayerStatus>().itemInventory[itemNumber];
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        itemInventory = PlayerStatus.FindObjectOfType<PlayerStatus>().itemInventory[itemNumber];
     }
 
     public void OnSelected()
     {
-        information.text = item.itemInformation;
+        information.text = itemInventory.itemInformation;
     }
 
     public void DeSelected()
