@@ -53,31 +53,39 @@ public class CharactorControllerRb : MonoBehaviour
 
             rb.velocity = velo;   // 計算した速度ベクトルをセットする
         }
-        // ジャンプの入力を取得し、接地している時に押されていたらジャンプする
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+
+        if (Input.GetButton("Skill"))
         {
-            Jump();
+
         }
         else
         {
-            anim.ResetTrigger("Jump");
-        }
-        // 攻撃の入力を取得し、接地している時に押されていたら攻撃する
-        if (Input.GetButtonDown("Attack") && IsGrounded())
-        {
-            Attack();
-        }
-        else
-        {
-            anim.ResetTrigger("Attack");
-        }
-        if (Input.GetButtonDown("Slide") && IsGrounded())
-        {
-            Slide();
-        }
-        else
-        {
-            anim.ResetTrigger("Slide");
+            // ジャンプの入力を取得し、接地している時に押されていたらジャンプする
+            if (Input.GetButtonDown("Jump") && IsGrounded())
+            {
+                Jump();
+            }
+            else
+            {
+                anim.ResetTrigger("Jump");
+            }
+            // 攻撃の入力を取得し、接地している時に押されていたら攻撃する
+            if (Input.GetButtonDown("Attack") && IsGrounded())
+            {
+                Attack();
+            }
+            else
+            {
+                anim.ResetTrigger("Attack");
+            }
+            if (Input.GetButtonDown("Slide") && IsGrounded())
+            {
+                Slide();
+            }
+            else
+            {
+                anim.ResetTrigger("Slide");
+            }
         }
     }
     /// <summary>
