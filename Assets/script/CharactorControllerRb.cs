@@ -56,7 +56,10 @@ public class CharactorControllerRb : MonoBehaviour
 
         if (Input.GetButton("Skill"))
         {
-
+            if (Input.GetButtonDown("Attack") && IsGrounded())
+            {
+                anim.SetTrigger("SkillAttack1");
+            }
         }
         else
         {
