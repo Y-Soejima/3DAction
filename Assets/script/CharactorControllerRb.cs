@@ -13,7 +13,7 @@ public class CharactorControllerRb : MonoBehaviour
     [SerializeField] float jumpPower = 5f;
     /// <summary>接地判定の際、中心 (Pivot) からどれくらいの距離を「接地している」と判定するかの長さ</summary>
     [SerializeField] float isGroundedLength = 1.1f;
-    
+
     Animator anim = null;
     Rigidbody rb = null;
     // Start is called before the first frame update
@@ -22,6 +22,7 @@ public class CharactorControllerRb : MonoBehaviour
         
         rb = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
+
     }
 
     // Update is called once per frame
@@ -56,6 +57,7 @@ public class CharactorControllerRb : MonoBehaviour
 
         if (Input.GetButton("Skill"))
         {
+
             if (Input.GetButtonDown("Attack") && IsGrounded())
             {
                 anim.SetTrigger("SkillAttack1");
