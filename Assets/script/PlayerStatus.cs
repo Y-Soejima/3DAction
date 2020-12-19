@@ -12,9 +12,14 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] int currentMp; // 現在のMP
     [SerializeField] Slider hpSlider; //HPバー
     [SerializeField] Slider mpSlider; //MPバー
+    //アイテムの種類
     [SerializeField] public ItemController[] itemInventory = new ItemController[System.Enum.GetValues(typeof(ItemController.ItemList)).Length];
+    //各アイテムの所持数
     [SerializeField] public int[] itemCounter = new int[System.Enum.GetValues(typeof(ItemController.ItemList)).Length];
-    
+    //スキルの種類
+    [SerializeField] public SkillBase[] skill = new SkillBase[System.Enum.GetValues(typeof(SkillBase.SkillList)).Length];
+    //スキルパネルにセットされるスキル
+    public SkillBase[] skillPanel = new SkillBase[4];
     void Start()
     {
         hpSlider.value = 1;
