@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class SkillBase : MonoBehaviour
 {
-    
-
-
+    [SerializeField] public int skillNumber; //スキルの固有番号
+    [SerializeField] string skillInformation; //スキルの説明
+ 
+    /// <summary>
+    /// スキル一覧
+    /// </summary>
     public enum SkillList
     {
         smash,
@@ -21,5 +24,10 @@ public class SkillBase : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SkillUse()
+    {
+
     }
 }

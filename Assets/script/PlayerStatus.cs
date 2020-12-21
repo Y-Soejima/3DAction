@@ -16,6 +16,7 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] public ItemController[] itemInventory = new ItemController[System.Enum.GetValues(typeof(ItemController.ItemList)).Length];
     //各アイテムの所持数
     [SerializeField] public int[] itemCounter = new int[System.Enum.GetValues(typeof(ItemController.ItemList)).Length];
+    [SerializeField] public Text[] itemCounterText = new Text[System.Enum.GetValues(typeof(ItemController.ItemList)).Length];
     //スキルの種類
     [SerializeField] public SkillBase[] skill = new SkillBase[System.Enum.GetValues(typeof(SkillBase.SkillList)).Length];
     //スキルパネルにセットされるスキル
@@ -31,7 +32,7 @@ public class PlayerStatus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        itemCounterText[0].text = itemCounter[0].ToString();
     }
 
     private void OnCollisionEnter(Collision collision)
