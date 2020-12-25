@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Smash : MonoBehaviour
+public class Smash : SkillBase
 {
     // Start is called before the first frame update
     void Start()
@@ -14,5 +14,11 @@ public class Smash : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public override void SkillUse()
+    {
+
+        base.SkillUse();
     }
 }

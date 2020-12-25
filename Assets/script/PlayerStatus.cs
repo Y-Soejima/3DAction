@@ -32,7 +32,11 @@ public class PlayerStatus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        itemCounterText[0].text = itemCounter[0].ToString();
+        for (int i = 0; i < itemCounterText.Length; i++)
+        {
+            if (itemInventory[i])
+            itemCounterText[i].text = itemCounter[i].ToString();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

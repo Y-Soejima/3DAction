@@ -26,7 +26,7 @@ public class SkillBase : MonoBehaviour
         
     }
 
-    public void SkillUse()
+    public virtual void SkillUse()
     {
 
     }
