@@ -19,7 +19,7 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] public Text[] itemCounterText = new Text[System.Enum.GetValues(typeof(ItemController.ItemList)).Length];
     //スキルの種類
     [SerializeField] public SkillBase[] skill = new SkillBase[System.Enum.GetValues(typeof(SkillBase.SkillList)).Length];
-    //スキルパネルにセットされるスキル
+    //スキルパネルにセットするスキル
     public SkillBase[] skillPanel = new SkillBase[4];
     void Start()
     {
@@ -35,7 +35,13 @@ public class PlayerStatus : MonoBehaviour
         for (int i = 0; i < itemCounterText.Length; i++)
         {
             if (itemInventory[i])
-            itemCounterText[i].text = itemCounter[i].ToString();
+            {
+                itemCounterText[i].text = itemCounter[i].ToString();
+            }
+            else
+            {
+                itemCounterText[i].text = "0";
+            }
         }
     }
 
