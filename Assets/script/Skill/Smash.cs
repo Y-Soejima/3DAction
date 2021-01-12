@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Smash : SkillBase
 {
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,8 @@ public class Smash : SkillBase
 
     public override void SkillUse()
     {
-
+        CharactorControllerRb cc = CharactorControllerRb.FindObjectOfType<CharactorControllerRb>();
+        cc.anim.SetTrigger("SkillAttack1");
         base.SkillUse();
     }
 }
