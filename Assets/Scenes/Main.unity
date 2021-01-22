@@ -10541,6 +10541,7 @@ GameObject:
   - component: {fileID: 487517469}
   - component: {fileID: 487517471}
   - component: {fileID: 487517470}
+  - component: {fileID: 487517472}
   m_Layer: 5
   m_Name: SkillWindow
   m_TagString: Untagged
@@ -10611,6 +10612,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 487517468}
   m_CullTransparentMesh: 0
+--- !u!114 &487517472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487517468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53cac8aa562c3ec4abe7e42a83ba17a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectSkillNumber: -1
 --- !u!1 &490033608
 GameObject:
   m_ObjectHideFlags: 0
@@ -11077,6 +11091,8 @@ GameObject:
   - component: {fileID: 500967214}
   - component: {fileID: 500967213}
   - component: {fileID: 500967212}
+  - component: {fileID: 500967215}
+  - component: {fileID: 500967216}
   m_Layer: 5
   m_Name: SkillButton
   m_TagString: Untagged
@@ -11184,6 +11200,48 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500967210}
   m_CullTransparentMesh: 0
+--- !u!114 &500967215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500967210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28f9cc2d215f51429fb5016fe6e7917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillMane: {fileID: 667457830}
+  sb: {fileID: 0}
+--- !u!114 &500967216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500967210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 15
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 500967215}
+          m_MethodName: OnClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &506620230
 GameObject:
   m_ObjectHideFlags: 0
@@ -15550,6 +15608,7 @@ GameObject:
   - component: {fileID: 725336803}
   - component: {fileID: 725336801}
   - component: {fileID: 725336802}
+  - component: {fileID: 725336806}
   m_Layer: 10
   m_Name: Camera
   m_TagString: MainCamera
@@ -15664,6 +15723,66 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -6.0160003, y: 131.914, z: 0}
+--- !u!114 &725336806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 725336800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 725336805}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!1 &734701110
 GameObject:
   m_ObjectHideFlags: 0
@@ -18775,6 +18894,8 @@ GameObject:
   - component: {fileID: 864728764}
   - component: {fileID: 864728763}
   - component: {fileID: 864728762}
+  - component: {fileID: 864728765}
+  - component: {fileID: 864728766}
   m_Layer: 5
   m_Name: SkillButton
   m_TagString: Untagged
@@ -18882,6 +19003,48 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 864728760}
   m_CullTransparentMesh: 0
+--- !u!114 &864728765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864728760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28f9cc2d215f51429fb5016fe6e7917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillMane: {fileID: 667457830}
+  sb: {fileID: 0}
+--- !u!114 &864728766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864728760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 15
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 864728765}
+          m_MethodName: OnClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &868085432
 GameObject:
   m_ObjectHideFlags: 0
@@ -19582,6 +19745,8 @@ GameObject:
   - component: {fileID: 891324088}
   - component: {fileID: 891324087}
   - component: {fileID: 891324086}
+  - component: {fileID: 891324089}
+  - component: {fileID: 891324090}
   m_Layer: 5
   m_Name: SkillButton
   m_TagString: Untagged
@@ -19689,6 +19854,48 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 891324084}
   m_CullTransparentMesh: 0
+--- !u!114 &891324089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891324084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28f9cc2d215f51429fb5016fe6e7917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillMane: {fileID: 667457830}
+  sb: {fileID: 0}
+--- !u!114 &891324090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891324084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 15
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 891324089}
+          m_MethodName: OnClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &892443174
 GameObject:
   m_ObjectHideFlags: 0
@@ -21355,6 +21562,54 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00020000339, y: 0.18464968, z: -0.03662076}
     m_Extent: {x: 0.121437155, y: 0.22592941, z: 0.11303774}
   m_DirtyAABB: 0
+--- !u!1 &993299813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 993299815}
+  - component: {fileID: 993299814}
+  m_Layer: 8
+  m_Name: PostProcessing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &993299814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993299813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 554b38f9cd4953f49bf03b7a39252355, type: 2}
+  isGlobal: 0
+  blendDistance: 0
+  weight: 1
+  priority: 0
+--- !u!4 &993299815
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993299813}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -41.58, y: 3.67, z: -1.09}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &994157981
 GameObject:
   m_ObjectHideFlags: 0
@@ -28910,6 +29165,8 @@ GameObject:
   - component: {fileID: 1330218173}
   - component: {fileID: 1330218172}
   - component: {fileID: 1330218171}
+  - component: {fileID: 1330218174}
+  - component: {fileID: 1330218175}
   m_Layer: 5
   m_Name: SkillButton
   m_TagString: Untagged
@@ -29017,6 +29274,48 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330218169}
   m_CullTransparentMesh: 0
+--- !u!114 &1330218174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330218169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f28f9cc2d215f51429fb5016fe6e7917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillMane: {fileID: 667457830}
+  sb: {fileID: 0}
+--- !u!114 &1330218175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330218169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 15
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1330218174}
+          m_MethodName: OnClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1330727379
 GameObject:
   m_ObjectHideFlags: 0
@@ -35291,6 +35590,8 @@ GameObject:
   - component: {fileID: 1597988076}
   - component: {fileID: 1597988075}
   - component: {fileID: 1597988078}
+  - component: {fileID: 1597988080}
+  - component: {fileID: 1597988079}
   m_Layer: 5
   m_Name: Skill0
   m_TagString: Untagged
@@ -35411,7 +35712,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillNumber: 0
-  skillInformation: 
+  skillInformation: "\u56DE\u8EE2\u5207\u308A"
+--- !u!114 &1597988079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597988073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 15
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1597988080}
+          m_MethodName: OnClick
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1597988080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597988073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86e4a1f2eb8770948b80d70d87ce45ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maneButton:
+  - {fileID: 667457834}
+  - {fileID: 491662781}
+  skillButton:
+  - {fileID: 1597988075}
+  skillPanelButton:
+  - {fileID: 500967212}
+  - {fileID: 1330218171}
+  - {fileID: 891324086}
+  - {fileID: 864728762}
+  skillPanel0: {fileID: 500967210}
+  skillNum: 0
 --- !u!1 &1598495851
 GameObject:
   m_ObjectHideFlags: 0
