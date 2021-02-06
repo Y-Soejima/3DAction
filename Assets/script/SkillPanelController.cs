@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class SkillPanelController : MonoBehaviour
 {
+    public SkillBase sb;
+    PlayerStatus ps;
     Animator skillAnim;
     // Start is called before the first frame update
     void Start()
     {
         skillAnim = GetComponent<Animator>();
+        ps = FindObjectOfType<PlayerStatus>();
     }
 
     // Update is called once per frame
@@ -21,6 +24,10 @@ public class SkillPanelController : MonoBehaviour
         else
         {
             skillAnim.SetBool("IsSkillReady", false);
+        }
+        if (sb != null)
+        {
+            ps.skillPanel[0] = sb;
         }
     }
 }

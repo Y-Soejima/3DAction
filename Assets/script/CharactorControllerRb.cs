@@ -14,12 +14,13 @@ public class CharactorControllerRb : MonoBehaviour
     /// <summary>接地判定の際、中心 (Pivot) からどれくらいの距離を「接地している」と判定するかの長さ</summary>
     [SerializeField] float isGroundedLength = 1.1f;
 
+    PlayerStatus ps;
     public Animator anim = null;
     Rigidbody rb = null;
     // Start is called before the first frame update
     void Start()
     {
-        
+        ps = PlayerStatus.FindObjectOfType<PlayerStatus>();
         rb = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
 
@@ -60,8 +61,12 @@ public class CharactorControllerRb : MonoBehaviour
 
             if (Input.GetButtonDown("Attack") && IsGrounded())
             {
-                //anim.SetTrigger("SkillAttack1");
-                Smash.FindObjectOfType<Smash>().SkillUse();
+                ps.skillPanel[1].SkillUse();
+                //Smash.FindObjectOfType<Smash>().SkillUse();
+            }
+            if (Input.GetButtonDown("Slide") && IsGrounded())
+            {
+                ps.skillPanel[3].SkillUse();
             }
         }
         else

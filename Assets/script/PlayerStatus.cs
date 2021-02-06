@@ -43,6 +43,10 @@ public class PlayerStatus : MonoBehaviour
                 itemCounterText[i].text = "0";
             }
         }
+        for (int i = 0; i < skillPanel.Length; i++)
+        {
+            //skillPanel[i] = ;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
