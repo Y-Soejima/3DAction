@@ -11261,8 +11261,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillMane: {fileID: 667457830}
-  skillPanel: {fileID: 549497788}
-  skillPanelNumber: 0
   sb: {fileID: 0}
 --- !u!114 &500967216
 MonoBehaviour:
@@ -19067,8 +19065,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillMane: {fileID: 667457830}
-  skillPanel: {fileID: 29775943}
-  skillPanelNumber: 2
   sb: {fileID: 0}
 --- !u!114 &864728766
 MonoBehaviour:
@@ -19920,8 +19916,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillMane: {fileID: 667457830}
-  skillPanel: {fileID: 309104872}
-  skillPanelNumber: 1
   sb: {fileID: 0}
 --- !u!114 &891324090
 MonoBehaviour:
@@ -29342,8 +29336,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skillMane: {fileID: 667457830}
-  skillPanel: {fileID: 344287397}
-  skillPanelNumber: 3
   sb: {fileID: 0}
 --- !u!114 &1330218175
 MonoBehaviour:
@@ -30275,7 +30267,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1379473946}
-  m_LocalRotation: {x: 0.030320114, y: 0.8413279, z: -0.047451477, w: 0.53758395}
+  m_LocalRotation: {x: 0.030320108, y: 0.8413279, z: -0.047451485, w: 0.5375839}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -35651,7 +35643,7 @@ GameObject:
   - component: {fileID: 1597988080}
   - component: {fileID: 1597988079}
   m_Layer: 5
-  m_Name: Skill0
+  m_Name: Skill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

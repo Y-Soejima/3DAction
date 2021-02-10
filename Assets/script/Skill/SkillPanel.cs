@@ -6,8 +6,8 @@ using UnityEngine.EventSystems;
 public class SkillPanel : MonoBehaviour
 {
     [SerializeField] GameObject skillMane;
-    [SerializeField] GameObject skillPanel;
-    [SerializeField] int skillPanelNumber;
+    //[SerializeField] GameObject skillPanel;
+    //[SerializeField] int skillPanelNumber;
     public SkillBase sb;
     PlayerStatus ps;
     SkillManeController smc;
@@ -21,8 +21,6 @@ public class SkillPanel : MonoBehaviour
         slc = SkillListController.FindObjectOfType<SkillListController>();
     }
 
-    
-
     public void OnClick()
     {
         for(int i = 0; i < ps.skill.Length; i++)
@@ -30,7 +28,6 @@ public class SkillPanel : MonoBehaviour
             if (i == smc.selectSkillNumber)
             {
                 sb = ps.skill[i];
-                SkillPanelController.FindObjectOfType<SkillPanelController>().sb = ps.skill[i];
             }
         }
         foreach (var button in slc.maneButton)

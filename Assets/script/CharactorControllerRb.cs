@@ -58,13 +58,19 @@ public class CharactorControllerRb : MonoBehaviour
 
         if (Input.GetButton("Skill"))
         {
-
-            if (Input.GetButtonDown("Attack") && IsGrounded())
+            if (Input.GetButtonDown("Y") && IsGrounded())
+            {
+                ps.skillPanel[0].SkillUse();
+            }
+            else if (Input.GetButtonDown("Attack") && IsGrounded())
             {
                 ps.skillPanel[1].SkillUse();
-                //Smash.FindObjectOfType<Smash>().SkillUse();
             }
-            if (Input.GetButtonDown("Slide") && IsGrounded())
+            else if (Input.GetButtonDown("Jump") && IsGrounded())
+            {
+                ps.skillPanel[2].SkillUse();
+            }
+            else if (Input.GetButtonDown("Slide") && IsGrounded())
             {
                 ps.skillPanel[3].SkillUse();
             }
