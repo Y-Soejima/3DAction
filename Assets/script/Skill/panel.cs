@@ -31,6 +31,12 @@ public class panel : MonoBehaviour
                 SkillBase skill = this.gameObject.GetComponent<SkillBase>();
                 ps.skillPanel[skillPanelnumber] = skill;
             }
+            else if(sp.skillNumber == 1)
+            {
+                this.gameObject.AddComponent<DubbleAttack>();
+                SkillBase skill = this.gameObject.GetComponent<SkillBase>();
+                ps.skillPanel[skillPanelnumber] = skill;
+            }
         }
     }
 }

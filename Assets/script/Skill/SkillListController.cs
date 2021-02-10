@@ -37,6 +37,5 @@ public class SkillListController : MonoBehaviour
         {
             button.interactable = false;
         }
-        
     }
 }

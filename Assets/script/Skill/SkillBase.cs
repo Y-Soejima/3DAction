@@ -13,6 +13,7 @@ public class SkillBase : MonoBehaviour
     public enum SkillList
     {
         smash,
+        DubbleAttack,
     };
     // Start is called before the first frame update
     void Start()
