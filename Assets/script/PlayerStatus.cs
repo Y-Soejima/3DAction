@@ -8,10 +8,10 @@ public class PlayerStatus : MonoBehaviour
 {
     [SerializeField] int maxHp = 100; // 最大HP
     [SerializeField] int currentHp; //現在のHP
-    [SerializeField] int maxMp = 100; //最大MP
-    [SerializeField] int currentMp; // 現在のMP
+    [SerializeField] public int maxMp = 100; //最大MP
+    [SerializeField] public int currentMp; // 現在のMP
     [SerializeField] Slider hpSlider; //HPバー
-    [SerializeField] Slider mpSlider; //MPバー
+    [SerializeField] public Slider mpSlider; //MPバー
     //アイテムの種類
     [SerializeField] public ItemController[] itemInventory = new ItemController[System.Enum.GetValues(typeof(ItemController.ItemList)).Length];
     //各アイテムの所持数
