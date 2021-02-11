@@ -11277,10 +11277,10 @@ RectTransform:
   m_Father: {fileID: 693263887}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 475, y: -125}
+  m_SizeDelta: {x: 300, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &382192927
 MonoBehaviour:
@@ -12891,7 +12891,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 428893048}
-  m_LocalRotation: {x: 0.040067673, y: 0.84032863, z: -0.0627066, w: 0.53694534}
+  m_LocalRotation: {x: 0.040067676, y: 0.84032863, z: -0.0627066, w: 0.53694534}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -14692,7 +14692,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &487517469
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18002,10 +18002,10 @@ RectTransform:
   m_Father: {fileID: 693263887}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 150, y: -125}
+  m_SizeDelta: {x: 300, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &586707508
 MonoBehaviour:
@@ -21300,7 +21300,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 725336800}
-  m_LocalRotation: {x: 0.040067673, y: 0.8403286, z: -0.062706605, w: 0.53694534}
+  m_LocalRotation: {x: 0.040067676, y: 0.8403286, z: -0.06270661, w: 0.53694534}
   m_LocalPosition: {x: -27.98994, y: 1.2379999, z: -1.7070947}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -24516,6 +24516,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillNumber: 1
   skillInformation: "\uFF12\u56DE\u653B\u6483"
+  decrementMp: 20
 --- !u!114 &835336454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26023,7 +26024,6 @@ GameObject:
   - component: {fileID: 868085433}
   - component: {fileID: 868085436}
   - component: {fileID: 868085435}
-  - component: {fileID: 868085437}
   - component: {fileID: 868085434}
   m_Layer: 0
   m_Name: 01_kohaku_A (1)
@@ -26281,20 +26281,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &868085437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 868085432}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcc3605f763d9094db66fc9d25053c6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftHandIk: {fileID: 1558388574}
-  rightHandIk: {fileID: 856028942}
 --- !u!1 &869563281
 GameObject:
   m_ObjectHideFlags: 0
@@ -47684,6 +47670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillNumber: 0
   skillInformation: "\u56DE\u8EE2\u5207\u308A"
+  decrementMp: 15
 --- !u!114 &1597988079
 MonoBehaviour:
   m_ObjectHideFlags: 0
