@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class SkillPanel : MonoBehaviour
 {
     [SerializeField] GameObject skillMane;
-    //[SerializeField] GameObject skillPanel;
+    [SerializeField] GameObject skillPanel;
     //[SerializeField] int skillPanelNumber;
     public SkillBase sb;
     PlayerStatus ps;
@@ -23,6 +23,10 @@ public class SkillPanel : MonoBehaviour
 
     public void OnClick()
     {
+        if (skillPanel.GetComponent<SkillBase>())
+        {
+            Destroy(skillPanel.GetComponent<SkillBase>());
+        }
         for(int i = 0; i < ps.skill.Length; i++)
         {
             if (i == smc.selectSkillNumber)

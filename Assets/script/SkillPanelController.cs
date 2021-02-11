@@ -25,9 +25,6 @@ public class SkillPanelController : MonoBehaviour
         {
             skillAnim.SetBool("IsSkillReady", false);
         }
-        if (sb != null)
-        {
-            ps.skillPanel[0] = sb;
-        }
+        
     }
 }

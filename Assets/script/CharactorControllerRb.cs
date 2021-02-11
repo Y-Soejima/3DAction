@@ -58,19 +58,20 @@ public class CharactorControllerRb : MonoBehaviour
 
         if (Input.GetButton("Skill"))
         {
-            if (Input.GetButtonDown("Y") && IsGrounded())
+
+            if (Input.GetButtonDown("Y") && IsGrounded() && ps.skillPanel[0] != null)
             {
                 ps.skillPanel[0].SkillUse();
             }
-            else if (Input.GetButtonDown("Attack") && IsGrounded())
+            else if (Input.GetButtonDown("Attack") && IsGrounded() && ps.skillPanel[1] != null)
             {
                 ps.skillPanel[1].SkillUse();
             }
-            else if (Input.GetButtonDown("Jump") && IsGrounded())
+            else if (Input.GetButtonDown("Jump") && IsGrounded() && ps.skillPanel[2] != null)
             {
                 ps.skillPanel[2].SkillUse();
             }
-            else if (Input.GetButtonDown("Slide") && IsGrounded())
+            else if (Input.GetButtonDown("Slide") && IsGrounded() && ps.skillPanel[3] != null)
             {
                 ps.skillPanel[3].SkillUse();
             }
