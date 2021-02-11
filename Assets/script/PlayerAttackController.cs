@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAttackController : MonoBehaviour
 {
-    [SerializeField] int attackPower = 20; //攻撃力
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -29,12 +29,6 @@ public class PlayerAttackController : MonoBehaviour
         if (other.gameObject.tag == "TreasureBox" && tb.isOpen == false)
         {
             tb.BoxOpen();
-        }
-
-        EnemyController ec = EnemyController.FindObjectOfType<EnemyController>();
-        if (other.gameObject.tag == "Enemy")
-        {
-            ec.enemycurrentHp -= attackPower;
         }
     }
 }

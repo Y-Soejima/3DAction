@@ -12,6 +12,7 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] public int currentMp; // 現在のMP
     [SerializeField] Slider hpSlider; //HPバー
     [SerializeField] public Slider mpSlider; //MPバー
+    [SerializeField] int attackPower = 20; //攻撃力
     //アイテムの種類
     [SerializeField] public ItemController[] itemInventory = new ItemController[System.Enum.GetValues(typeof(ItemController.ItemList)).Length];
     //各アイテムの所持数
@@ -21,12 +22,15 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] public SkillBase[] skill = new SkillBase[System.Enum.GetValues(typeof(SkillBase.SkillList)).Length];
     //スキルパネルにセットするスキル
     public SkillBase[] skillPanel = new SkillBase[4];
+    public AnimatorClipInfo[] animatorClipInfos;
+    CharactorControllerRb cc;
     void Start()
     {
         hpSlider.value = 1;
         mpSlider.value = 1;
         currentHp = maxHp;
         currentMp = maxMp;
+        cc = FindObjectOfType<CharactorControllerRb>();
     }
 
     // Update is called once per frame
@@ -43,10 +47,8 @@ public class PlayerStatus : MonoBehaviour
                 itemCounterText[i].text = "0";
             }
         }
-        for (int i = 0; i < skillPanel.Length; i++)
-        {
-            //skillPanel[i] = ;
-        }
+        animatorClipInfos = cc.anim.GetCurrentAnimatorClipInfo(0);
+        Debug.Log(animatorClipInfos[0].clip.name);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -72,6 +74,23 @@ public class PlayerStatus : MonoBehaviour
             }
             itemCounter[item.itemNumber] = item.itemCount;
         }
+        else if (other.gameObject.tag == "Enemy")
+        {
+            EnemyController ec = EnemyController.FindObjectOfType<EnemyController>();
+            if (animatorClipInfos[0].clip.name == "SkillAttack1")
+            {
+                ec.enemycurrentHp -= attackPower * 2;
+            }
+            else if (animatorClipInfos[0].clip.name == "DubbleAttack")
+            {
+                ec.enemycurrentHp -= attackPower + attackPower / 2;
+            }
+            else
+            {
+                ec.enemycurrentHp -= attackPower;
+            }
+            Debug.Log(ec.enemycurrentHp);
+        }
     }
 
     public void HpHeal()
@@ -87,6 +106,10 @@ public class PlayerStatus : MonoBehaviour
     public void MpHeal()
     {
         currentMp += 20;
+        if (currentMp > maxMp)
+        {
+            currentMp = maxMp;
+        }
         mpSlider.value = (float)currentMp / (float)maxMp;
     }
 }
