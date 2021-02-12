@@ -13,6 +13,7 @@ public class PlayerStatus : MonoBehaviour
     [SerializeField] Slider hpSlider; //HPバー
     [SerializeField] public Slider mpSlider; //MPバー
     [SerializeField] int attackPower = 20; //攻撃力
+    int damage; // ダメージ
     //アイテムの種類
     [SerializeField] public ItemController[] itemInventory = new ItemController[System.Enum.GetValues(typeof(ItemController.ItemList)).Length];
     //各アイテムの所持数
@@ -48,7 +49,6 @@ public class PlayerStatus : MonoBehaviour
             }
         }
         animatorClipInfos = cc.anim.GetCurrentAnimatorClipInfo(0);
-        Debug.Log(animatorClipInfos[0].clip.name);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -79,23 +79,30 @@ public class PlayerStatus : MonoBehaviour
             EnemyController ec = EnemyController.FindObjectOfType<EnemyController>();
             if (animatorClipInfos[0].clip.name == "SkillAttack1")
             {
-                ec.enemycurrentHp -= attackPower * 2;
+                damage = attackPower * 2;
             }
             else if (animatorClipInfos[0].clip.name == "DubbleAttack")
             {
-                ec.enemycurrentHp -= attackPower + attackPower / 2;
+                damage= attackPower + attackPower / 2;
             }
             else
             {
-                ec.enemycurrentHp -= attackPower;
+                damage= attackPower;
+                currentMp += 10;
+                if (currentMp > maxMp)
+                {
+                    currentMp = maxMp;
+                }
+                mpSlider.value = (float)currentMp / (float)maxMp;
             }
-            Debug.Log(ec.enemycurrentHp);
+            ec.enemycurrentHp -= damage;
+            Debug.Log("Damage:" + damage);
         }
     }
 
     public void HpHeal()
     {
-        currentHp += 20;
+        currentHp += 50;
         if (currentHp > maxHp)
         {
             currentHp = maxHp;

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class SkillPanel : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class SkillPanel : MonoBehaviour
     PlayerStatus ps;
     SkillManeController smc;
     SkillListController slc;
+    Image image;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,7 @@ public class SkillPanel : MonoBehaviour
         ps = PlayerStatus.FindObjectOfType<PlayerStatus>();
         smc = SkillManeController.FindObjectOfType<SkillManeController>();
         slc = SkillListController.FindObjectOfType<SkillListController>();
+        image = this.GetComponent<Image>();
     }
 
     public void OnClick()
@@ -32,6 +35,7 @@ public class SkillPanel : MonoBehaviour
             if (i == smc.selectSkillNumber)
             {
                 sb = ps.skill[i];
+                image.sprite = sb.skillImage;
             }
         }
         foreach (var button in slc.maneButton)

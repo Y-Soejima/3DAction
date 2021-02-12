@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class panel : MonoBehaviour
 {
@@ -9,11 +10,13 @@ public class panel : MonoBehaviour
     [SerializeField] SkillPanel skillPanel;
     [SerializeField] int skillPanelnumber;
     PlayerStatus ps;
+    Image image;
     
     // Start is called before the first frame update
     void Start()
     {
         ps = FindObjectOfType<PlayerStatus>();
+        image = GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -37,6 +40,7 @@ public class panel : MonoBehaviour
                 SkillBase skill = this.gameObject.GetComponent<SkillBase>();
                 ps.skillPanel[skillPanelnumber] = skill;
             }
+            image.sprite = sp.skillImage;
         }
     }
 }

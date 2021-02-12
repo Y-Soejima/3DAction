@@ -35,6 +35,7 @@ public class ButtonEvent : MonoBehaviour
         MenuController.FindObjectOfType<MenuController>().ChangeWindow(window);
     }
 
+
     /// <summary>
     /// メニュー画面を閉じる
     /// </summary>
