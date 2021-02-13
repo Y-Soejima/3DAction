@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class PlayerStatus : MonoBehaviour
 {
-    [SerializeField] int maxHp = 100; // 最大HP
-    [SerializeField] int currentHp; //現在のHP
+    [SerializeField] public int maxHp = 100; // 最大HP
+    [SerializeField] public int currentHp; //現在のHP
     [SerializeField] public int maxMp = 100; //最大MP
     [SerializeField] public int currentMp; // 現在のMP
-    [SerializeField] Slider hpSlider; //HPバー
+    [SerializeField] public Slider hpSlider; //HPバー
     [SerializeField] public Slider mpSlider; //MPバー
     [SerializeField] int attackPower = 20; //攻撃力
     int damage; // ダメージ
@@ -97,6 +97,29 @@ public class PlayerStatus : MonoBehaviour
             }
             ec.enemycurrentHp -= damage;
             Debug.Log("Damage:" + damage);
+        }
+        else if (other.gameObject.tag == ("Boss"))
+        {
+            Boss boss = FindObjectOfType<Boss>();
+            if (animatorClipInfos[0].clip.name == "SkillAttack1")
+            {
+                damage = attackPower * 2;
+            }
+            else if (animatorClipInfos[0].clip.name == "DubbleAttack")
+            {
+                damage = attackPower + attackPower / 2;
+            }
+            else
+            {
+                damage = attackPower;
+                currentMp += 10;
+                if (currentMp > maxMp)
+                {
+                    currentMp = maxMp;
+                }
+                mpSlider.value = (float)currentMp / (float)maxMp;
+            }
+            boss.bossCurrentHp -= damage;
         }
     }
 
