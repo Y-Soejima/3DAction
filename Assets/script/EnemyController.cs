@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
     Transform m_player = null;
     [SerializeField] int enemyMaxHp = 100;//最大HP
     [SerializeField] public int enemycurrentHp;//現在のHP
+    [SerializeField] Slider hpSlider;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,5 +33,6 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        hpSlider.value = (float)enemycurrentHp / enemyMaxHp;
     }
 }

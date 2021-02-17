@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,6 +25,7 @@ public class PlayerStatus : MonoBehaviour
     //スキルパネルにセットするスキル
     public SkillBase[] skillPanel = new SkillBase[4];
     public AnimatorClipInfo[] animatorClipInfos;
+    [SerializeField] GameObject[] enemys;
     CharactorControllerRb cc;
     void Start()
     {
@@ -32,6 +34,7 @@ public class PlayerStatus : MonoBehaviour
         currentHp = maxHp;
         currentMp = maxMp;
         cc = FindObjectOfType<CharactorControllerRb>();
+        enemys = GameObject.FindGameObjectsWithTag("Enemy");
     }
 
     // Update is called once per frame
@@ -49,6 +52,11 @@ public class PlayerStatus : MonoBehaviour
             }
         }
         animatorClipInfos = cc.anim.GetCurrentAnimatorClipInfo(0);
+        if (enemys != null)
+        {
+            enemys[0] = enemys.OrderBy(enemy => Vector3.Distance(this.gameObject.transform.position, enemy.transform.position)).FirstOrDefault();
+            Debug.Log(enemys[0]);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -80,23 +88,27 @@ public class PlayerStatus : MonoBehaviour
             if (animatorClipInfos[0].clip.name == "SkillAttack1")
             {
                 damage = attackPower * 2;
+                ec.enemycurrentHp -= damage;
+                Debug.Log("Damage:" + damage);
             }
             else if (animatorClipInfos[0].clip.name == "DubbleAttack")
             {
-                damage= attackPower + attackPower / 2;
+                damage = attackPower + attackPower / 2;
+                ec.enemycurrentHp -= damage;
+                Debug.Log("Damage:" + damage);
             }
-            else
+            else if (animatorClipInfos[0].clip.name == "Attack")
             {
-                damage= attackPower;
+                damage = attackPower;
                 currentMp += 10;
                 if (currentMp > maxMp)
                 {
                     currentMp = maxMp;
                 }
                 mpSlider.value = (float)currentMp / (float)maxMp;
+                ec.enemycurrentHp -= damage;
+                Debug.Log("Damage:" + damage);
             }
-            ec.enemycurrentHp -= damage;
-            Debug.Log("Damage:" + damage);
         }
         else if (other.gameObject.tag == ("Boss"))
         {
@@ -135,7 +147,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void MpHeal()
     {
-        currentMp += 20;
+        currentMp += 50;
         if (currentMp > maxMp)
         {
             currentMp = maxMp;

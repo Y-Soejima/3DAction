@@ -52,7 +52,7 @@ public class Boss : MonoBehaviour
             Vector3 playerPosition = m_player.position;
             playerPosition.y = this.transform.position.y;
             this.transform.LookAt(playerPosition);
-            if (15 >= distance && distance >= 4)
+            if (15 >= distance)
             {
                 movePotion = m_player.position;
                 meshAgent.SetDestination(movePotion);
