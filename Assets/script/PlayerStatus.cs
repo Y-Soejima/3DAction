@@ -20,6 +20,7 @@ public class PlayerStatus : MonoBehaviour
     //各アイテムの所持数
     [SerializeField] public int[] itemCounter = new int[System.Enum.GetValues(typeof(ItemController.ItemList)).Length];
     [SerializeField] public Text[] itemCounterText = new Text[System.Enum.GetValues(typeof(ItemController.ItemList)).Length];
+    [SerializeField] public ItemController itemSlot;
     //スキルの種類
     [SerializeField] public SkillBase[] skill = new SkillBase[System.Enum.GetValues(typeof(SkillBase.SkillList)).Length];
     //スキルパネルにセットするスキル
@@ -81,6 +82,10 @@ public class PlayerStatus : MonoBehaviour
                 itemInventory[item.itemNumber] = item;
             }
             itemCounter[item.itemNumber] = item.itemCount;
+            if (itemSlot == null)
+            {
+                itemSlot = item;
+            }
         }
         else if (other.gameObject.tag == "Enemy")
         {

@@ -58,8 +58,7 @@ public class CharactorControllerRb : MonoBehaviour
 
         if (Input.GetButton("Skill"))
         {
-
-            if (Input.GetButtonDown("Y") && IsGrounded() && ps.skillPanel[0] != null)
+            if (Input.GetButtonDown("Use") && IsGrounded() && ps.skillPanel[0] != null)
             {
                 ps.skillPanel[0].SkillUse();
             }
@@ -103,6 +102,10 @@ public class CharactorControllerRb : MonoBehaviour
             else
             {
                 anim.ResetTrigger("Slide");
+            }
+            if (Input.GetButtonDown("Use") && ps.itemSlot != null)
+            {
+                ps.itemSlot.Use();
             }
         }
     }
