@@ -18,11 +18,16 @@ public class EnemyController : MonoBehaviour
         {
             m_player = player.transform;
         }
+        hpSlider.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (enemycurrentHp < enemyMaxHp && enemycurrentHp > 0)
+        {
+            hpSlider.gameObject.SetActive(true);
+        }
         if (m_player)
         {
             Vector3 playerPosition = m_player.position;

@@ -5,10 +5,12 @@ using UnityEngine;
 public class AttackdecisionController : MonoBehaviour
 {
     [SerializeField] Collider attackTrigger = null;//攻撃判定のトリガー
+    
     // Start is called before the first frame update
     void Start()
     {
         attackTrigger.gameObject.SetActive(false);
+        
     }
 
     /// <summary>
@@ -19,6 +21,8 @@ public class AttackdecisionController : MonoBehaviour
         if (attackTrigger)
         {
             attackTrigger.gameObject.SetActive(true);
+            
+
         }
     }
 
@@ -30,6 +34,7 @@ public class AttackdecisionController : MonoBehaviour
         if (attackTrigger)
         {
             attackTrigger.gameObject.SetActive(false);
+            
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -67,27 +68,31 @@ public class PlayerStatus : MonoBehaviour
             int damage = Random.Range(10, 30);
             Debug.Log("Damage:" + damage);
             currentHp -= damage;
-            hpSlider.value = (float)currentHp / (float)maxHp;
+            DOTween.To(hp => hpSlider.value = hp,
+                hpSlider.value,
+                (float)currentHp / (float)maxHp,
+                1f);
+            //hpSlider.value = (float)currentHp / (float)maxHp;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Item")
-        {
-            ItemController item = other.gameObject.GetComponent<ItemController>();
-            item.Get(item);
-            if (itemInventory[item.itemNumber] == null)
-            {
-                itemInventory[item.itemNumber] = item;
-            }
-            itemCounter[item.itemNumber] = item.itemCount;
-            if (itemSlot == null)
-            {
-                itemSlot = item;
-            }
-        }
-        else if (other.gameObject.tag == "Enemy")
+        //if (other.gameObject.tag == "Item")
+        //{
+        //    ItemController item = other.gameObject.GetComponent<ItemController>();
+        //    item.Get(item);
+        //    if (itemInventory[item.itemNumber] == null)
+        //    {
+        //        itemInventory[item.itemNumber] = item;
+        //    }
+        //    itemCounter[item.itemNumber] = item.itemCount;
+        //    if (itemSlot == null)
+        //    {
+        //        itemSlot = item;
+        //    }
+        //}
+        if (other.gameObject.tag == "Enemy")
         {
             EnemyController ec = EnemyController.FindObjectOfType<EnemyController>();
             if (animatorClipInfos[0].clip.name == "SkillAttack1")
@@ -158,5 +163,20 @@ public class PlayerStatus : MonoBehaviour
             currentMp = maxMp;
         }
         mpSlider.value = (float)currentMp / (float)maxMp;
+    }
+
+    public void ItemGet(GameObject item)
+    {
+        ItemController ic = item.GetComponent<ItemController>();
+        ic.Get(ic);
+        if (itemInventory[ic.itemNumber] == null)
+        {
+            itemInventory[ic.itemNumber] = ic;
+        }
+        itemCounter[ic.itemNumber] = ic.itemCount;
+        if (itemSlot == null)
+        {
+            itemSlot = ic;
+        }
     }
 }

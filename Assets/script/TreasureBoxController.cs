@@ -9,11 +9,13 @@ public class TreasureBoxController : MonoBehaviour
     //アイテムを出現させる場所
     [SerializeField] Transform itemPop;
     public bool isOpen = false;
+    public GameObject popItem;
     Animator open;
 
     private void Start()
     {
-        open = GetComponentInChildren<Animator>();
+        open = GetComponent<Animator>();
+        popItem = treasure[RandomPop(treasure)];
     }
     /// <summary>
     /// 宝箱を開けたときランダムにアイテムを出現させる
@@ -23,8 +25,7 @@ public class TreasureBoxController : MonoBehaviour
         if (itemPop)
         {
             open.Play("BoxOpen");
-            Instantiate(treasure[RandomPop(treasure)], itemPop);
-
+            Instantiate(popItem, itemPop);
             isOpen = true;
         }
     }
@@ -37,5 +38,11 @@ public class TreasureBoxController : MonoBehaviour
     int RandomPop(GameObject[] item)
     {
         return Random.Range(0, item.Length);
+    }
+
+    private void ItemSet()
+    {
+        PlayerStatus ps = FindObjectOfType<PlayerStatus>();
+        ps.ItemGet(popItem);
     }
 }

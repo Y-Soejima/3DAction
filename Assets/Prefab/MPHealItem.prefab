@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2314995222577516259}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -8, y: -7, z: 24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2314995222577516259}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75ac46db48935e4489a8ff8fe70b7d97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iteminventory: {x: -26, y: -1, z: 4}
+  iteminventory: {x: -8, y: -7, z: 24}
   itemNumber: 1
   itemCount: 0
-  itemInformation: 
+  itemInformation: "MP\u3092\u56DE\u5FA9"

@@ -13,7 +13,7 @@ public class CharactorControllerRb : MonoBehaviour
     [SerializeField] float jumpPower = 5f;
     /// <summary>接地判定の際、中心 (Pivot) からどれくらいの距離を「接地している」と判定するかの長さ</summary>
     [SerializeField] float isGroundedLength = 1.1f;
-
+    [SerializeField] ParticleSystem efect;
     PlayerStatus ps;
     public Animator anim = null;
     Rigidbody rb = null;
@@ -23,7 +23,7 @@ public class CharactorControllerRb : MonoBehaviour
         ps = PlayerStatus.FindObjectOfType<PlayerStatus>();
         rb = GetComponent<Rigidbody>();
         anim = GetComponentInChildren<Animator>();
-
+        efect.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -61,18 +61,22 @@ public class CharactorControllerRb : MonoBehaviour
             if (Input.GetButtonDown("Use") && IsGrounded() && ps.skillPanel[0] != null)
             {
                 ps.skillPanel[0].SkillUse();
+                efect.gameObject.SetActive(true);
             }
             else if (Input.GetButtonDown("Attack") && IsGrounded() && ps.skillPanel[1] != null)
             {
                 ps.skillPanel[1].SkillUse();
+                efect.gameObject.SetActive(true);
             }
             else if (Input.GetButtonDown("Jump") && IsGrounded() && ps.skillPanel[2] != null)
             {
                 ps.skillPanel[2].SkillUse();
+                efect.gameObject.SetActive(true);
             }
             else if (Input.GetButtonDown("Slide") && IsGrounded() && ps.skillPanel[3] != null)
             {
                 ps.skillPanel[3].SkillUse();
+                efect.gameObject.SetActive(true);
             }
         }
         else
@@ -90,6 +94,7 @@ public class CharactorControllerRb : MonoBehaviour
             if (Input.GetButtonDown("Attack") && IsGrounded())
             {
                 Attack();
+                efect.gameObject.SetActive(true);
             }
             else
             {

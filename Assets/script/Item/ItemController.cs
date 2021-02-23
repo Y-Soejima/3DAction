@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
-    [SerializeField] Vector3 iteminventory = new Vector3(-26, -1, 4);
+    [SerializeField] Vector3 iteminventory = new Vector3(-8, -7, 24);
     [SerializeField] public int itemNumber; //アイテムの固有番号
     [SerializeField] public int itemCount = 0;　//アイテム所持数
     [SerializeField] public string itemInformation; //アイテムの説明
