@@ -36,13 +36,12 @@ public class ItemButton : MonoBehaviour
     {
         if (itemInventory)
         {
-            itemInventory.Use();
+            itemInventory.Use(itemInventory);
             PlayerStatus.FindObjectOfType<PlayerStatus>().itemCounter[itemNumber] = itemInventory.itemCount;
             if (itemInventory.itemCount == 0)
             {
                 EventSystem.current.SetSelectedGameObject(itemWindow);
             }
         }
-
     }
 }

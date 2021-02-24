@@ -9,9 +9,9 @@ public class HpHeal : ItemController
     {
         ps = PlayerStatus.FindObjectOfType<PlayerStatus>();
     }
-    public override void Use()
+    public override void Use(ItemController item)
     {
         ps.HpHeal();
-        base.Use();
+        base.Use(item);
     }
 }

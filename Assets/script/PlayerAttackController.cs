@@ -24,9 +24,8 @@ public class PlayerAttackController : MonoBehaviour
         {
             sc.Clear();
         }
-
-        TreasureBoxController tb = TreasureBoxController.FindObjectOfType<TreasureBoxController>();
-        if (other.gameObject.tag == "TreasureBox" && tb.isOpen == false)
+       TreasureBoxController tb = other.GetComponent<TreasureBoxController>();
+       if (other.gameObject.tag == "TreasureBox" && tb.isOpen == false)
         {
             tb.BoxOpen();
         }

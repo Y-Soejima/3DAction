@@ -21,5 +21,9 @@ public class ItemSlotImage : MonoBehaviour
         {
             image.sprite = ps.itemSlot.image;
         }
+        else
+        {
+            image.sprite = null;
+        }
     }
 }

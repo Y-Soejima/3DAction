@@ -17,17 +17,24 @@ public class ItemController : MonoBehaviour
     public enum ItemList
     {
         hpHeal,
-        //mpHeal,
+        mpHeal,
     };
     /// <summary>
     /// アイテムを使う
     /// </summary>
-    public virtual void Use()
+    public virtual void Use(ItemController item)
     {
-        itemCount--;
-        if (itemCount == 0)
+        var number = System.Enum.GetNames(typeof(ItemController.ItemList)).Length;
+        for (int i = 0; i < number; i++)
         {
-            DestroyImmediate(this.gameObject);
+            if (item.itemNumber == i)
+            {
+                itemCount--;
+            }
+            if (item.itemCount == 0)
+            {
+                DestroyImmediate(item.gameObject);
+            }
         }
     }
 

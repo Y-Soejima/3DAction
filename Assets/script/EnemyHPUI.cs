@@ -13,6 +13,6 @@ public class EnemyHPUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Camera.main.transform.rotation;
+        transform.forward = Camera.main.transform.forward;
     }
 }

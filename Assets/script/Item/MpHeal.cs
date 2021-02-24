@@ -16,9 +16,9 @@ public class MpHeal : ItemController
         
     }
 
-    public override void Use()
+    public override void Use(ItemController item)
     {
         PlayerStatus.FindObjectOfType<PlayerStatus>().MpHeal();
-        base.Use();
+        base.Use(item);
     }
 }

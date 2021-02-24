@@ -17,6 +17,7 @@ public class CharactorControllerRb : MonoBehaviour
     PlayerStatus ps;
     public Animator anim = null;
     Rigidbody rb = null;
+    float slotSerect;
     // Start is called before the first frame update
     void Start()
     {
@@ -110,8 +111,17 @@ public class CharactorControllerRb : MonoBehaviour
             }
             if (Input.GetButtonDown("Use") && ps.itemSlot != null)
             {
-                ps.itemSlot.Use();
+                ps.itemSlot.Use(ps.itemSlot);
             }
+        }
+        if (Input.GetButtonDown("L_Trigger"))
+        {
+            int nextSlotItemNum = ps.itemSlot.itemNumber - 1;
+            if (nextSlotItemNum < 0)
+            {
+                nextSlotItemNum = ps.itemInventory.Length - 1;
+            }
+            ps.itemSlot = ps.itemInventory[nextSlotItemNum];
         }
     }
     /// <summary>
