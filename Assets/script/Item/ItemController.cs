@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemController : MonoBehaviour
 {
-    [SerializeField] Vector3 iteminventory = new Vector3(-8, -7, 24);
+    [SerializeField] Vector3 iteminventory = new Vector3(0, 0, 0);
     [SerializeField] public int itemNumber; //アイテムの固有番号
     [SerializeField] public int itemCount = 0;　//アイテム所持数
     [SerializeField] public string itemInformation; //アイテムの説明
+    [SerializeField] public Sprite image;
 
     /// <summary>
     /// アイテム一覧
@@ -15,7 +17,7 @@ public class ItemController : MonoBehaviour
     public enum ItemList
     {
         hpHeal,
-        mpHeal,
+        //mpHeal,
     };
     /// <summary>
     /// アイテムを使う

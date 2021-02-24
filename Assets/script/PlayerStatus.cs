@@ -78,21 +78,21 @@ public class PlayerStatus : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.gameObject.tag == "Item")
-        //{
-        //    ItemController item = other.gameObject.GetComponent<ItemController>();
-        //    item.Get(item);
-        //    if (itemInventory[item.itemNumber] == null)
-        //    {
-        //        itemInventory[item.itemNumber] = item;
-        //    }
-        //    itemCounter[item.itemNumber] = item.itemCount;
-        //    if (itemSlot == null)
-        //    {
-        //        itemSlot = item;
-        //    }
-        //}
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Item")
+        {
+            ItemController item = other.gameObject.GetComponent<ItemController>();
+            item.Get(item);
+            if (itemInventory[item.itemNumber] == null)
+            {
+                itemInventory[item.itemNumber] = item;
+            }
+            itemCounter[item.itemNumber] = item.itemCount;
+            if (itemSlot == null)
+            {
+                itemSlot = item;
+            }
+        }
+        else if (other.gameObject.tag == "Enemy")
         {
             EnemyController ec = EnemyController.FindObjectOfType<EnemyController>();
             if (animatorClipInfos[0].clip.name == "SkillAttack1")
@@ -165,18 +165,18 @@ public class PlayerStatus : MonoBehaviour
         mpSlider.value = (float)currentMp / (float)maxMp;
     }
 
-    public void ItemGet(GameObject item)
-    {
-        ItemController ic = item.GetComponent<ItemController>();
-        ic.Get(ic);
-        if (itemInventory[ic.itemNumber] == null)
-        {
-            itemInventory[ic.itemNumber] = ic;
-        }
-        itemCounter[ic.itemNumber] = ic.itemCount;
-        if (itemSlot == null)
-        {
-            itemSlot = ic;
-        }
-    }
+    //public void ItemGet(GameObject item)
+    //{
+    //    ItemController ic = item.GetComponent<ItemController>();
+    //    ic.Get(ic);
+    //    if (itemInventory[ic.itemNumber] == null)
+    //    {
+    //        itemInventory[ic.itemNumber] = ic;
+    //    }
+    //    itemCounter[ic.itemNumber] = ic.itemCount;
+    //    if (itemSlot == null)
+    //    {
+    //        itemSlot = ic;
+    //    }
+    //}
 }
