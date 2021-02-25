@@ -19,8 +19,11 @@ public class DamageTextController : MonoBehaviour
     {
         transform.forward = Camera.main.transform.forward;
         Sequence seq = DOTween.Sequence();
+        DOTween.ToAlpha(() => damageText.color,
+            alpha => damageText.color = alpha,
+            0f,
+            1f);
         seq.Append(this.transform.DOMove(new Vector3(0, 0.2f, 0), 1)).SetRelative()
-            .Join(sprite.DOFade(0, 1))
             .OnComplete(() => Destroy(this.gameObject));
     }
 }

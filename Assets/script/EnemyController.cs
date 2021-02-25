@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class EnemyController : MonoBehaviour
 {
@@ -40,13 +41,15 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        hpSlider.value = (float)enemycurrentHp / enemyMaxHp;
+        DOTween.To(hp => hpSlider.value = hp,
+                hpSlider.value,
+                (float)enemycurrentHp / (float)enemyMaxHp,
+                1f);
     }
 
     public void TextPop(int damage)
     {
-        Instantiate(damageText, textPos);
         damageText.GetComponent<TextMesh>().text = damage.ToString();
-
+        Instantiate(damageText, textPos);
     }
 }

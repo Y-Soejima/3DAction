@@ -54,11 +54,11 @@ public class PlayerStatus : MonoBehaviour
             }
         }
         animatorClipInfos = cc.anim.GetCurrentAnimatorClipInfo(0);
-        if (enemys != null)
-        {
-            enemys[0] = enemys.OrderBy(enemy => Vector3.Distance(this.gameObject.transform.position, enemy.transform.position)).FirstOrDefault();
-            Debug.Log(enemys[0]);
-        }
+        //if (enemys != null)
+        //{
+        //    enemys[0] = enemys.OrderBy(enemy => Vector3.Distance(this.gameObject.transform.position, enemy.transform.position)).FirstOrDefault();
+        //    Debug.Log(enemys[0]);
+        //}
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -152,7 +152,10 @@ public class PlayerStatus : MonoBehaviour
         {
             currentHp = maxHp;
         }
-        hpSlider.value = (float)currentHp / (float)maxHp;
+        DOTween.To(hp => hpSlider.value = hp,
+                hpSlider.value,
+                (float)currentHp / (float)maxHp,
+                1f);
     }
 
     public void MpHeal()
