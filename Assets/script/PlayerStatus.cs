@@ -98,14 +98,12 @@ public class PlayerStatus : MonoBehaviour
             if (animatorClipInfos[0].clip.name == "SkillAttack1")
             {
                 damage = attackPower * 2;
-                ec.enemycurrentHp -= damage;
-                Debug.Log("Damage:" + damage);
+                
             }
             else if (animatorClipInfos[0].clip.name == "DubbleAttack")
             {
                 damage = attackPower + attackPower / 2;
-                ec.enemycurrentHp -= damage;
-                Debug.Log("Damage:" + damage);
+                
             }
             else if (animatorClipInfos[0].clip.name == "Attack")
             {
@@ -116,9 +114,11 @@ public class PlayerStatus : MonoBehaviour
                     currentMp = maxMp;
                 }
                 mpSlider.value = (float)currentMp / (float)maxMp;
-                ec.enemycurrentHp -= damage;
-                Debug.Log("Damage:" + damage);
+                
             }
+            ec.enemycurrentHp -= damage;
+            ec.TextPop(damage);
+            Debug.Log("Damage:" + damage);
         }
         else if (other.gameObject.tag == ("Boss"))
         {

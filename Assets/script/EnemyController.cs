@@ -9,6 +9,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] int enemyMaxHp = 100;//最大HP
     [SerializeField] public int enemycurrentHp;//現在のHP
     [SerializeField] Slider hpSlider;
+    [SerializeField] GameObject damageText;
+    [SerializeField] Transform textPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,5 +41,12 @@ public class EnemyController : MonoBehaviour
             Destroy(this.gameObject);
         }
         hpSlider.value = (float)enemycurrentHp / enemyMaxHp;
+    }
+
+    public void TextPop(int damage)
+    {
+        Instantiate(damageText, textPos);
+        damageText.GetComponent<TextMesh>().text = damage.ToString();
+
     }
 }
