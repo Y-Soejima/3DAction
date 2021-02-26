@@ -18,6 +18,7 @@ public class TreasureBoxController : MonoBehaviour
     {
         open = GetComponentInChildren<Animator>();
         text.SetActive(false);
+        
     }
 
     private void Update()
@@ -48,9 +49,5 @@ public class TreasureBoxController : MonoBehaviour
         return Random.Range(0, item.Length);
     }
 
-    //private void ItemSet()
-    //{
-    //    PlayerStatus ps = FindObjectOfType<PlayerStatus>();
-    //    ps.ItemGet(popItem);
-    //}
+    
 }
