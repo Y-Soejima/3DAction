@@ -10,10 +10,13 @@ public class ItemButton : MonoBehaviour
     [SerializeField] Text information;
     [SerializeField] int itemNumber;
     [SerializeField] ItemController itemInventory;
+    [SerializeField] AudioClip submitSound;
+    [SerializeField] AudioClip serectSound;
+    AudioSource buttonSoundSource;
     // Start is called before the first frame update
     void Start()
     {
-        
+        buttonSoundSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -24,6 +27,7 @@ public class ItemButton : MonoBehaviour
 
     public void OnSelected()
     {
+        buttonSoundSource.PlayOneShot(serectSound);
         information.text = itemInventory.itemInformation;
     }
 
@@ -34,6 +38,7 @@ public class ItemButton : MonoBehaviour
 
     public void ItemUse()
     {
+        buttonSoundSource.PlayOneShot(submitSound);
         if (itemInventory)
         {
             itemInventory.Use(itemInventory);

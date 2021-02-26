@@ -13,6 +13,9 @@ public class SkillPanel : MonoBehaviour
     SkillManeController smc;
     SkillListController slc;
     Image image;
+    [SerializeField] AudioClip submitSound;
+    [SerializeField] AudioClip serectSound;
+    AudioSource buttonSoundSource;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +24,12 @@ public class SkillPanel : MonoBehaviour
         smc = SkillManeController.FindObjectOfType<SkillManeController>();
         slc = SkillListController.FindObjectOfType<SkillListController>();
         image = this.GetComponent<Image>();
+        buttonSoundSource = GetComponent<AudioSource>();
     }
 
     public void OnClick()
     {
+        buttonSoundSource.PlayOneShot(submitSound);
         if (skillPanel.GetComponent<SkillBase>())
         {
             Destroy(skillPanel.GetComponent<SkillBase>());
@@ -52,4 +57,8 @@ public class SkillPanel : MonoBehaviour
         }
     }
 
+    public void Onselect()
+    {
+        buttonSoundSource.PlayOneShot(serectSound);
+    }
 }
