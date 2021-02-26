@@ -12,10 +12,10 @@ public class PlayerAttackController : MonoBehaviour
         {
             sc.Clear();
         }
-       TreasureBoxController tb = other.GetComponent<TreasureBoxController>();
-       if (other.gameObject.tag == "TreasureBox" && tb.isOpen == false)
-        {
-            tb.BoxOpen();
-        }
+       //TreasureBoxController tb = other.GetComponent<TreasureBoxController>();
+       //if (other.gameObject.tag == "TreasureBox" && tb.isOpen == false)
+       // {
+       //     tb.BoxOpen();
+       // }
     }
 }

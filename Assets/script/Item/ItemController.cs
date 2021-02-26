@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -38,7 +39,6 @@ public class ItemController : MonoBehaviour
             }
             if (item.itemCount == 0)
             {
-
                 DestroyImmediate(item.gameObject);
             }
         }

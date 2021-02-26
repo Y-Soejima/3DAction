@@ -17,7 +17,7 @@ public class CharactorControllerRb : MonoBehaviour
     PlayerStatus ps;
     public Animator anim = null;
     Rigidbody rb = null;
-    float slotSerect;
+    public bool isAttack = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,25 +59,28 @@ public class CharactorControllerRb : MonoBehaviour
 
         if (Input.GetButton("Skill"))
         {
-            if (Input.GetButtonDown("Use") && IsGrounded() && ps.skillPanel[0] != null)
+            if (isAttack == true)
             {
-                ps.skillPanel[0].SkillUse();
-                efect.gameObject.SetActive(true);
-            }
-            else if (Input.GetButtonDown("Attack") && IsGrounded() && ps.skillPanel[1] != null)
-            {
-                ps.skillPanel[1].SkillUse();
-                efect.gameObject.SetActive(true);
-            }
-            else if (Input.GetButtonDown("Jump") && IsGrounded() && ps.skillPanel[2] != null)
-            {
-                ps.skillPanel[2].SkillUse();
-                efect.gameObject.SetActive(true);
-            }
-            else if (Input.GetButtonDown("Slide") && IsGrounded() && ps.skillPanel[3] != null)
-            {
-                ps.skillPanel[3].SkillUse();
-                efect.gameObject.SetActive(true);
+                if (Input.GetButtonDown("Use") && IsGrounded() && ps.skillPanel[0] != null)
+                {
+                    ps.skillPanel[0].SkillUse();
+                    efect.gameObject.SetActive(true);
+                }
+                else if (Input.GetButtonDown("Attack") && IsGrounded() && ps.skillPanel[1] != null)
+                {
+                    ps.skillPanel[1].SkillUse();
+                    efect.gameObject.SetActive(true);
+                }
+                else if (Input.GetButtonDown("Jump") && IsGrounded() && ps.skillPanel[2] != null)
+                {
+                    ps.skillPanel[2].SkillUse();
+                    efect.gameObject.SetActive(true);
+                }
+                else if (Input.GetButtonDown("Slide") && IsGrounded() && ps.skillPanel[3] != null)
+                {
+                    ps.skillPanel[3].SkillUse();
+                    efect.gameObject.SetActive(true);
+                }
             }
         }
         else
@@ -91,11 +94,14 @@ public class CharactorControllerRb : MonoBehaviour
             {
                 anim.ResetTrigger("Jump");
             }
-            // 攻撃の入力を取得し、接地している時に押されていたら攻撃する
-            if (Input.GetButtonDown("Attack") && IsGrounded())
+            if (isAttack == true)
             {
-                Attack();
-                efect.gameObject.SetActive(true);
+                // 攻撃の入力を取得し、接地している時に押されていたら攻撃する
+                if (Input.GetButtonDown("Attack") && IsGrounded())
+                {
+                    Attack();
+                    efect.gameObject.SetActive(true);
+                }
             }
             else
             {
@@ -121,10 +127,7 @@ public class CharactorControllerRb : MonoBehaviour
             {
                 nextSlotItemNum = ps.itemInventory.Length - 1;
             }
-            if (ps.itemInventory[nextSlotItemNum].itemCount != 0)
-            {
-                ps.itemSlot = ps.itemInventory[nextSlotItemNum];
-            }
+            ps.itemSlot = ps.itemInventory[nextSlotItemNum];
         }
     }
     /// <summary>
@@ -173,4 +176,38 @@ public class CharactorControllerRb : MonoBehaviour
         anim.SetTrigger("Jump");
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == ("TreasureBox"))
+        {
+            TreasureBoxController box = other.GetComponent<TreasureBoxController>();
+            if (box.isOpen == false)
+            {
+                box.text.SetActive(true);
+            }
+            isAttack = false;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == ("TreasureBox"))
+        {
+            TreasureBoxController box = other.GetComponent<TreasureBoxController>();
+            if (Input.GetButtonDown("Attack") && isAttack == false)
+            {
+                box.BoxOpen();
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == ("TreasureBox"))
+        {
+            TreasureBoxController box = other.GetComponent<TreasureBoxController>();
+            box.text.SetActive(false);
+            isAttack = true;
+        }
+    }
 }

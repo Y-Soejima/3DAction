@@ -11,12 +11,20 @@ public class TreasureBoxController : MonoBehaviour
     public bool isOpen = false;
     //public GameObject popItem;
     Animator open;
+    [SerializeField] public GameObject text;
+    
 
     private void Start()
     {
         open = GetComponentInChildren<Animator>();
-        
+        text.SetActive(false);
     }
+
+    private void Update()
+    {
+        text.transform.forward = Camera.main.transform.forward;
+    }
+    
     /// <summary>
     /// 宝箱を開けたときランダムにアイテムを出現させる
     /// </summary>
