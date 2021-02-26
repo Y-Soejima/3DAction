@@ -15,8 +15,12 @@ public class SkillListController : MonoBehaviour
     SkillManeController smc;
     PlayerStatus ps;
     public int skillNum;
+    [SerializeField] AudioClip selectSound;
+    [SerializeField] AudioClip submitSound;
+    AudioSource buttonSoundSource;
     public void Start()
     {
+        buttonSoundSource = GetComponent<AudioSource>();
         ps = FindObjectOfType<PlayerStatus>();
         smc = SkillManeController.FindObjectOfType<SkillManeController>();
         foreach (var button in skillPanelButton)
@@ -27,6 +31,7 @@ public class SkillListController : MonoBehaviour
     }
     public void OnClick()
     {
+        buttonSoundSource.PlayOneShot(submitSound);
         smc.SetSkillNumber(skillNum);
         foreach (var button in skillPanelButton)
         {
@@ -46,6 +51,7 @@ public class SkillListController : MonoBehaviour
 
     public void OnSelect()
     {
+        buttonSoundSource.PlayOneShot(selectSound);
         information.text = skill.skillInformation;
     }
 

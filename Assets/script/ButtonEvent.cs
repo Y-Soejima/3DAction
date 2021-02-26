@@ -8,13 +8,21 @@ public class ButtonEvent : MonoBehaviour
 {
     [SerializeField] string informationText;
     [SerializeField] Text information;
-   
+    [SerializeField] AudioClip selectSound;
+    //[SerializeField] AudioClip submitSound;
+    [SerializeField] AudioClip ExitSound;
+    AudioSource buttonSoundSource;
 
+    private void Start()
+    {
+        buttonSoundSource = GetComponent<AudioSource>();
+    }
     /// <summary>
     /// ボタンが選択されたときに呼ぶ
     /// </summary>
     public void OnSelected()
     {
+        buttonSoundSource?.PlayOneShot(selectSound);
         information.text = informationText;
     }
 
@@ -41,6 +49,7 @@ public class ButtonEvent : MonoBehaviour
     /// </summary>
     public void CloseWindow()
     {
+        buttonSoundSource.PlayOneShot(ExitSound);
         MenuController.FindObjectOfType<MenuController>().MenuScreen();
     }
 }
