@@ -39,7 +39,7 @@ public class ItemController : MonoBehaviour
             }
             if (item.itemCount == 0)
             {
-                DestroyImmediate(item.gameObject);
+                DestroyImmediate(item?.gameObject);
             }
         }
     }

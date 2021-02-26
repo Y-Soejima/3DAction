@@ -2,21 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GimmikDoor : DoorControllerBase
+public class GimmikDoor : MonoBehaviour
 {
+    SwitchController sc;
+    Animator door;
     // Start is called before the first frame update
     void Start()
     {
-        
+        sc = FindObjectOfType<SwitchController>();
+        door = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        SwitchController sc = SwitchController.FindObjectOfType<SwitchController>();
         if (sc.gimmickTrigger1 == true)
         {
-            base.Open();
+            Open();
         }
+    }
+
+    void Open()
+    {
+        door.Play("Open");
     }
 }

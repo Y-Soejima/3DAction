@@ -29,6 +29,7 @@ public class PlayerStatus : MonoBehaviour
     public AnimatorClipInfo[] animatorClipInfos;
     [SerializeField] GameObject[] enemys;
     CharactorControllerRb cc;
+    public Tween heal;
     void Start()
     {
         hpSlider.value = 1;
@@ -152,10 +153,7 @@ public class PlayerStatus : MonoBehaviour
         {
             currentHp = maxHp;
         }
-        DOTween.To(hp => hpSlider.value = hp,
-                hpSlider.value,
-                (float)currentHp / (float)maxHp,
-                1f);
+        hpSlider.value = (float)currentHp / (float)maxHp;
     }
 
     public void MpHeal()

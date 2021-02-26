@@ -47,7 +47,7 @@ public class Boss : MonoBehaviour
             BossAttack();
         }
 
-        if (m_player)
+        if (m_player && bossCurrentHp > 0)
         {
             Vector3 playerPosition = m_player.position;
             playerPosition.y = this.transform.position.y;
