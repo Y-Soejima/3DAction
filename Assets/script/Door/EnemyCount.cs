@@ -2,23 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyRoomDoor : MonoBehaviour
+public class EnemyCount : MonoBehaviour
 {
-    Animator door;
+    public static int enemys;
     // Start is called before the first frame update
     void Start()
     {
-        door = GetComponentInChildren<Animator>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (EnemyCount.enemys == 0)
-        {
-            door.Play("Open");
-        }
+        enemys = GameObject.FindGameObjectsWithTag("Enemy").Length;
     }
-
-    
 }
