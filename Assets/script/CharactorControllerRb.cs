@@ -121,7 +121,10 @@ public class CharactorControllerRb : MonoBehaviour
             {
                 nextSlotItemNum = ps.itemInventory.Length - 1;
             }
-            ps.itemSlot = ps.itemInventory[nextSlotItemNum];
+            if (ps.itemInventory[nextSlotItemNum].itemCount != 0)
+            {
+                ps.itemSlot = ps.itemInventory[nextSlotItemNum];
+            }
         }
     }
     /// <summary>
