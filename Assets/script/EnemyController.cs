@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] Slider hpSlider;
     [SerializeField] GameObject damageText;
     [SerializeField] Transform textPos;
+    Tween enemyHp;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,19 +38,39 @@ public class EnemyController : MonoBehaviour
             playerPosition.y = this.transform.position.y;
             this.transform.LookAt(playerPosition);
         }
-        if (enemycurrentHp <= 0)
-        {
-            Destroy(this.gameObject);
-        }
-        DOTween.To(hp => hpSlider.value = hp,
-                hpSlider.value,
-                (float)enemycurrentHp / (float)enemyMaxHp,
-                1f);
+        BuildSeq();
+        PlaySeq();
     }
 
     public void TextPop(int damage)
     {
         damageText.GetComponent<TextMesh>().text = damage.ToString();
         Instantiate(damageText, textPos);
+    }
+
+
+    public void BuildSeq()
+    {
+        enemyHp = DOTween.To(hp =>
+        {
+            if (hp <= 0)
+            {
+                Destroy(this.gameObject);
+            }
+            hpSlider.value = hp;
+        },
+                hpSlider.value,
+                (float)enemycurrentHp / (float)enemyMaxHp,
+                1f);
+    }
+
+    public void PlaySeq()
+    {
+        enemyHp.Play();
+    }
+
+    private void OnDestroy()
+    {
+        enemyHp?.Kill();
     }
 }

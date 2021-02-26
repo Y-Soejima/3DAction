@@ -1,21 +1,27 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
     Transform m_player = null;
     [SerializeField] int bossMaxHp;
     [SerializeField] public int bossCurrentHp;
+    [SerializeField] public Slider bossHp;
     [SerializeField] GameObject player;
     [SerializeField] float moveSpeed;
+    [SerializeField] GameObject text;
+    [SerializeField] Transform pop;
     Vector3 movePotion;
     Animator b_anim;
     Rigidbody rb;
     PlayerStatus ps;
     NavMeshAgent meshAgent;
     CharactorControllerRb cc;
+    Tween bossHpTween;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,11 +37,16 @@ public class Boss : MonoBehaviour
         bossCurrentHp = bossMaxHp;
         meshAgent = GetComponent<NavMeshAgent>();
         movePotion = m_player.position;
+        bossHp.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (bossCurrentHp < bossMaxHp)
+        {
+            bossHp.gameObject.SetActive(true);
+        }
         if (bossCurrentHp <= 0)
         {
             b_anim.Play("Die");
@@ -46,7 +57,6 @@ public class Boss : MonoBehaviour
         {
             BossAttack();
         }
-
         if (m_player && bossCurrentHp > 0)
         {
             Vector3 playerPosition = m_player.position;
@@ -59,6 +69,7 @@ public class Boss : MonoBehaviour
             }
             b_anim.SetFloat("Speed", meshAgent.velocity.magnitude);
         }
+
     }
 
     void BossAttack()
@@ -73,5 +84,36 @@ public class Boss : MonoBehaviour
             ps.currentHp -= 30;
             ps.hpSlider.value = (float)ps.currentHp / (float)ps.maxHp;
         }
+    }
+
+    public void DamageTextPop(int damage)
+    {
+        text.GetComponent<TextMesh>().text = damage.ToString();
+        Instantiate(text, pop);
+    }
+
+    public void BossSequence()
+    {
+        bossHpTween = DOTween.To(hp =>
+        {
+            if (hp <= 0)
+            {
+                Destroy(this.gameObject);
+            }
+            bossHp.value = hp;
+        },
+                bossHp.value,
+                (float)bossCurrentHp / (float)bossMaxHp,
+                1f);
+    }
+
+    public void BossPlaySeq()
+    {
+        bossHpTween.Play();
+    }
+
+    private void OnDestroy()
+    {
+        bossHpTween?.Kill();
     }
 }

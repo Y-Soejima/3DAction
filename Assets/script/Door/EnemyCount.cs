@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyCount : MonoBehaviour
 {
-    public static int enemys;
+    public static int enemys = -1;
     // Start is called before the first frame update
     void Start()
     {

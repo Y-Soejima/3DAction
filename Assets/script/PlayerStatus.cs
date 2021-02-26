@@ -118,6 +118,8 @@ public class PlayerStatus : MonoBehaviour
                 
             }
             ec.enemycurrentHp -= damage;
+            ec.BuildSeq();
+            ec.PlaySeq();
             ec.TextPop(damage);
             Debug.Log("Damage:" + damage);
         }
@@ -143,6 +145,9 @@ public class PlayerStatus : MonoBehaviour
                 mpSlider.value = (float)currentMp / (float)maxMp;
             }
             boss.bossCurrentHp -= damage;
+            boss.BossSequence();
+            boss.BossPlaySeq();
+            boss.DamageTextPop(damage);
         }
     }
 
