@@ -38,8 +38,6 @@ public class EnemyController : MonoBehaviour
             playerPosition.y = this.transform.position.y;
             this.transform.LookAt(playerPosition);
         }
-        BuildSeq();
-        PlaySeq();
     }
 
     public void TextPop(int damage)

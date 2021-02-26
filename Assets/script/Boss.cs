@@ -69,7 +69,6 @@ public class Boss : MonoBehaviour
             }
             b_anim.SetFloat("Speed", meshAgent.velocity.magnitude);
         }
-
     }
 
     void BossAttack()
