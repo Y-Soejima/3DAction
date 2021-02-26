@@ -22,7 +22,7 @@ public class ItemSlotImage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ps.itemSlot.itemCount != 0 || ps.itemSlot != null)
+        if (ps.itemSlot != null)
         {
             //this.gameObject.SetActive(true);
             image.sprite = ps.itemSlot.image;
