@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SkillBase : MonoBehaviour
 {
     [SerializeField] public int skillNumber; //スキルの固有番号
-    [SerializeField] string skillInformation; //スキルの説明
+    [SerializeField] public string skillInformation; //スキルの説明
     [SerializeField] public Sprite skillImage;
  
     /// <summary>

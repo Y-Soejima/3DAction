@@ -8,7 +8,6 @@ public class SkillPanel : MonoBehaviour
 {
     [SerializeField] GameObject skillMane;
     [SerializeField] GameObject skillPanel;
-    //[SerializeField] int skillPanelNumber;
     public SkillBase sb;
     PlayerStatus ps;
     SkillManeController smc;
@@ -52,4 +51,5 @@ public class SkillPanel : MonoBehaviour
             button.interactable = false;
         }
     }
+
 }

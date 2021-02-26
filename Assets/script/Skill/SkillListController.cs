@@ -10,15 +10,20 @@ public class SkillListController : MonoBehaviour
     [SerializeField] public Button[] skillButton = new Button[1];
     [SerializeField] public Button[] skillPanelButton = new Button[4];
     [SerializeField] GameObject skillPanel0;
+    [SerializeField] Text information;
+    [SerializeField] SkillBase skill;
     SkillManeController smc;
+    PlayerStatus ps;
     public int skillNum;
     public void Start()
     {
+        ps = FindObjectOfType<PlayerStatus>();
         smc = SkillManeController.FindObjectOfType<SkillManeController>();
         foreach (var button in skillPanelButton)
         {
             button.interactable = false;
         }
+        skill = ps.skill[skillNum];
     }
     public void OnClick()
     {
@@ -37,5 +42,15 @@ public class SkillListController : MonoBehaviour
         {
             button.interactable = false;
         }
+    }
+
+    public void OnSelect()
+    {
+        information.text = skill.skillInformation;
+    }
+
+    public void OnDeserect()
+    {
+        information.text = "";
     }
 }
