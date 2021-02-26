@@ -187,6 +187,18 @@ public class CharactorControllerRb : MonoBehaviour
             }
             isAttack = false;
         }
+
+        else if (other.gameObject.tag == ("Switch"))
+        {
+            SwitchController sc = other.GetComponent<SwitchController>();
+            {
+                if (sc.gimmickTrigger1 == false)
+                {
+                    sc.openText.SetActive(true);
+                }
+            }
+            isAttack = false;
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -199,6 +211,17 @@ public class CharactorControllerRb : MonoBehaviour
                 box.BoxOpen();
             }
         }
+
+        else if (other.gameObject.tag == ("Switch"))
+        {
+            SwitchController sc = other.GetComponent<SwitchController>();
+            {
+                if (Input.GetButtonDown("Attack") && sc.gimmickTrigger1 == false)
+                {
+                    sc.Clear();
+                }
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -207,6 +230,13 @@ public class CharactorControllerRb : MonoBehaviour
         {
             TreasureBoxController box = other.GetComponent<TreasureBoxController>();
             box.text.SetActive(false);
+            isAttack = true;
+        }
+
+        else if (other.gameObject.tag == ("Switch"))
+        {
+            SwitchController sc = other.GetComponent<SwitchController>();
+            sc.openText.SetActive(false);
             isAttack = true;
         }
     }
