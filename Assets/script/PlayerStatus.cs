@@ -121,7 +121,7 @@ public class PlayerStatus : MonoBehaviour
             ec.BuildSeq();
             ec.PlaySeq();
             ec.TextPop(damage);
-            Debug.Log("Damage:" + damage);
+            //Debug.Log("Damage:" + damage);
         }
         else if (other.gameObject.tag == ("Boss"))
         {

@@ -4,22 +4,24 @@ using UnityEngine;
 
 public class LocusController : MonoBehaviour
 {
-    [SerializeField] ParticleSystem locus;
-
+    [SerializeField] ParticleSystem Locus;
     // Start is called before the first frame update
     void Start()
     {
-        locus.gameObject.SetActive(false);
+        Locus.gameObject.SetActive(false);
+        
     }
 
     // Update is called once per frame
-    void BeginLocus()
+    void BeginBrueLocus()
     {
-        locus.gameObject.SetActive(true);
+        Locus.gameObject.SetActive(true);
     }
 
-    void EndLocus()
+    void EndBrueLocus()
     {
-        locus.gameObject.SetActive(false);
+        Locus.gameObject.SetActive(false);
     }
+
+
 }

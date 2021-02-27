@@ -7,16 +7,16 @@ using UnityEngine.UI;
 
 public class ItemSlotImage : MonoBehaviour
 {
+    [SerializeField] Image itemImage;
     PlayerStatus ps;
-    Image image;
     Text itemCountText;
     // Start is called before the first frame update
     void Start()
     {
         ps = FindObjectOfType<PlayerStatus>();
-        image = GetComponent<Image>();
+        //itemImage = GetComponentInChildren<Image>();
         itemCountText = GetComponentInChildren<Text>();
-        //this.gameObject.SetActive(false);
+        itemImage.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -24,14 +24,14 @@ public class ItemSlotImage : MonoBehaviour
     {
         if (ps.itemSlot != null)
         {
-            //this.gameObject.SetActive(true);
-            image.sprite = ps.itemSlot.image;
+            itemImage.gameObject.SetActive(true);
+            itemImage.sprite = ps.itemSlot.image;
             itemCountText.text = ps.itemSlot.itemCount.ToString();
         }
         else
         {
-            //this.gameObject.SetActive(false);
-            image.sprite = null;
+            itemImage.gameObject.SetActive(false);
+            itemImage.sprite = null;
             itemCountText.text = "";
         }
     }
