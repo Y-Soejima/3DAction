@@ -47,11 +47,6 @@ public class Boss : MonoBehaviour
         {
             bossHp.gameObject.SetActive(true);
         }
-        if (bossCurrentHp <= 0)
-        {
-            b_anim.Play("Die");
-            //Destroy(this.gameObject);
-        }
         float distance = Vector3.Distance(player.transform.position, this.transform.position);
         if (distance <= 5)
         {
@@ -97,7 +92,8 @@ public class Boss : MonoBehaviour
         {
             if (hp <= 0)
             {
-                Destroy(this.gameObject);
+                b_anim.Play("Die");
+                StartCoroutine("BossDestroy");
             }
             bossHp.value = hp;
         },
@@ -114,5 +110,11 @@ public class Boss : MonoBehaviour
     private void OnDestroy()
     {
         bossHpTween?.Kill();
+    }
+
+    public IEnumerator BossDestroy()
+    {
+        yield return new WaitForSeconds(2f);
+        Destroy(this.gameObject);
     }
 }
